@@ -23,9 +23,9 @@ websocket.util = {
             ws = new WebSocket(url);    
         } else if ('MozWebSocket' in window) {    
             ws = new MozWebSocket(url);    
-        } else {    
-            alert('浏览器不支持');    
-            return;  
+        } else {
+            url = url.replace("ws", "http")
+            ws = new SockJS(url + "/sockjs");
         }
         return ws;
 	},

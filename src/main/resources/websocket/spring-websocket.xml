@@ -1,16 +1,26 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:websocket="http://www.springframework.org/schema/websocket"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
-	<bean id="websocket" class="com.lgy.websocket.SystemWebSocketHandler" />
+    <!-- 配置消息处理器 -->
+    <bean id="websocket" class="com.lgy.websocket.SystemWebSocketHandler"/>
 
-	<websocket:handlers>
-		<websocket:mapping path="/webSocketServer" handler="websocket" />
-		<websocket:handshake-interceptors>
-			<bean class="com.lgy.interceptor.WebSocketHandshakeInterceptor" />
-		</websocket:handshake-interceptors>
-	</websocket:handlers>
+    <websocket:handlers>
+        <!-- websocket ws地址设置-->
+        <websocket:mapping path="/webSocketServer" handler="websocket"/>
+        <!-- 握手拦截器设置 -->
+        <websocket:handshake-interceptors>
+            <bean class="com.lgy.interceptor.WebSocketHandshakeInterceptor"/>
+        </websocket:handshake-interceptors>
+    </websocket:handlers>
+
+    <!-- sockjs支持 -->
+    <websocket:handlers>
+        <websocket:mapping path="/webSocketServer/sockjs" handler="websocket"/>
+        <websocket:sockjs />
+    </websocket:handlers>
 </beans>
+

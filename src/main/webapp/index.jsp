@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>主界面</title>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/sockjs.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/websocketUtils.js"></script>
 <!-- js code -->
 <script type="text/javascript">
