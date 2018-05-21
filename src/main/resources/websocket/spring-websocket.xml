@@ -7,13 +7,15 @@
 
     <!-- 配置消息处理器 -->
     <bean id="websocket" class="com.lgy.websocket.SystemWebSocketHandler"/>
+    <!-- websocket 拦截器 -->
+    <bean id="webSocketHandshakeInterceptor" class="com.lgy.interceptor.WebSocketHandshakeInterceptor" />
 
     <websocket:handlers>
         <!-- websocket ws地址设置-->
         <websocket:mapping path="/webSocketServer" handler="websocket"/>
         <!-- 握手拦截器设置 -->
         <websocket:handshake-interceptors>
-            <bean class="com.lgy.interceptor.WebSocketHandshakeInterceptor"/>
+            <ref bean="webSocketHandshakeInterceptor" />
         </websocket:handshake-interceptors>
     </websocket:handlers>
 
