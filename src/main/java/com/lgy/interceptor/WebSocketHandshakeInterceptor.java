@@ -2,6 +2,7 @@ package com.lgy.interceptor;
 
 import java.util.Map;
 
+import com.lgy.domain.User;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;
@@ -22,10 +23,8 @@ public class WebSocketHandshakeInterceptor extends HttpSessionHandshakeIntercept
 			ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
 			HttpSession session = servletRequest.getServletRequest().getSession(false);
 
-			return false;
-			//HttpSession session = servletRequest.getServletRequest().getSession(false);
-			/*//如果用户已经登录，允许聊天
-			if(session.getAttribute("loginUser")!=null){
+			//如果用户已经登录，允许聊天
+			if(session !=null && session.getAttribute("loginUser")!=null){
 				//获取登录的用户
 				User loginUser=(User)session.getAttribute("loginUser") ;
 				//将用户放入socket处理器的会话(WebSocketSession)中
@@ -36,7 +35,7 @@ public class WebSocketHandshakeInterceptor extends HttpSessionHandshakeIntercept
 				//握手失败！
 				System.out.println("--------------握手已失败...");
 				return false;
-			}*/
+			}
 		}
 		return super.beforeHandshake(request, response, wsHandler, attributes);
 	}
