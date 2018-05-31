@@ -43,7 +43,7 @@
 
         function test() {
 
-            var a_cross_domain_url = "http://127.0.0.1:8080/${pageContext.request.contextPath }/index/test";
+            var a_cross_domain_url = "http://10.162.11.18:8080/${pageContext.request.contextPath }/index/test";
             alert(a_cross_domain_url);
             $.ajax({
                 url: a_cross_domain_url,
@@ -59,7 +59,7 @@
         }
 
         function testAave() {
-            var a_cross_domain_url = "${pageContext.request.contextPath }/index/saveSession";
+            var a_cross_domain_url = "http://10.162.11.18:8080/${pageContext.request.contextPath }/index/saveSession";
             $.ajax({
                 url: a_cross_domain_url,
                 // 将XHR对象的withCredentials设为true
